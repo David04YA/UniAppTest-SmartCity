@@ -4,7 +4,7 @@
 const getBaseUrl = () => {
     const ip = uni.getStorageSync('server_ip') || '127.0.0.1';
     const port = uni.getStorageSync('server_port') || '8080';
-    return `http://${ip}:${port}`; // 虽然目前不真实请求，但格式要写对
+    return `http://${ip}:${port}`; 
 };
 
 const request = (url, method = 'GET', data = {}) => {
