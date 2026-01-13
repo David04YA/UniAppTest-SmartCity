@@ -6,7 +6,7 @@
       indicator-active-color="#007aff">
       
 	  <!-- vfor循环 -->
-      <swiper-item v-for="(img, index) in guideImages" :key="index">
+    <swiper-item v-for="(img, index) in guideImages" :key="index">
         <image :src="img" mode="aspectFill" class="guide-img"></image>
         
 		
@@ -15,7 +15,7 @@
           <button class="btn setting-btn" @click="openNetworkSetting">网络设置</button>
           <button class="btn enter-btn" @click="launchApp">进入应用</button>
         </view>
-      </swiper-item>
+    </swiper-item>
       
     </swiper>
   </view>
@@ -46,21 +46,27 @@ const openNetworkSetting = () => {
       }
     }
   });
+  // ushowmodal: ({})title标题 content内容 
+  // showCancel是否显示取消按钮 editable是否显示输入框 placeholderText输入框提示的文字
+  // success showmodal调用成功后的回调函数
 };
 
 // 3. 进入主页逻辑
 const launchApp = () => {
   // 标记已看过引导页
   uni.setStorageSync('has_launched', true);
+  // uni.setStorageSync(key,data) 
+  
   // 跳转到首页
   uni.switchTab({
+	  // 跳转同时清空所有非tab页面
     url: '/pages/index/index'
   });
 };
 </script>
 
-<style scoped>
-/* 样式部分保持不变 */
+<style lang="scss" scoped>
+	
 .guide-container, .guide-swiper, .guide-img {
   width: 100%;
   height: 100vh;
