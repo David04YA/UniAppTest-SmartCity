@@ -60,7 +60,7 @@ const launchApp = () => {
   // 跳转到首页
   uni.switchTab({
 	  // 跳转同时清空所有非tab页面
-    url: '/pages/index/index'
+    url: '../index/index'
   });
 };
 </script>

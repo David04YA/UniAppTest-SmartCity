@@ -1,17 +1,42 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/guide/guide",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}
+		,{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
 		},
 		{
-			"path": "pages/guide/guide",
+			"path": "pages/services/services",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/help/help",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/news/news",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/homepage/homepage",
 			"style": {
 				"navigationBarTitleText": ""
 			}
 		}
+		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -19,5 +44,14 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	"tabBar": {
+		"list": [
+			{ "pagePath": "pages/index/index","text": "首页"},
+			{"pagePath": "pages/services/services","text": "全部服务"},
+			{"pagePath": "pages/help/help","text": "精准扶贫"},
+			{"pagePath": "pages/news/news","text": "新闻"},
+			{"pagePath": "pages/homepage/homepage","text": "个人中心"}
+		]
+	}
 }

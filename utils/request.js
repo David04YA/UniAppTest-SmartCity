@@ -7,7 +7,7 @@ const getBaseUrl = () => {
     return `http://${ip}:${port}`; 
 };
 
-const request = (url, method = 'GET', data = {}) => {
+const requesttests = (url, method = 'GET', data = {}) => {
     // 真实项目中这里是 getBaseUrl() + url
     // 现在模拟状态，我们直接映射到本地 static/mock 文件夹
     const mockUrl = `/static/mock${url}.json`;
