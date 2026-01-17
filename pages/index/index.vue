@@ -10,6 +10,9 @@
 				</swiper-item>
 			</swiper>
 		</view>
+		<view class="bus mission16">
+			
+		</view>
 	</view>
 </template>
 
