@@ -89,6 +89,30 @@
 			"style": {
 				"navigationBarTitleText": ""
 			}
+		},
+		{
+			"path": "pages/index/application/reserveCheckCar/main/carReserve/carReserve",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/application/reserveCheckCar/main/carReserve/chocieTimePage",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/application/reserveCheckCar/main/carReserve/addCheckCar",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/application/reserveCheckCar/main/carReserve/choiceLocation",
+			"style": {
+				"navigationBarTitleText": ""
+			}
 		}
 		
 	],

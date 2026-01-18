@@ -9,7 +9,7 @@
 
 <script setup>
 	import { ref } from 'vue';
-	import { onLoad } from '@dcloudio/uni-app';
+	import { onLoad , onShow } from '@dcloudio/uni-app';
 	import { getRequest , getToken } from '../../../../../../utils/request';
 	
 	
@@ -31,6 +31,13 @@
 						'id':itemid.value.id
 					}
 				})
+				if(res.code==200){
+					uni.navigateBack(-1)
+				}else{
+				uni.showToast({
+					title:'请求失败'
+				})
+			}
 			}else{
 				uni.showToast({
 					title:'请输入完整'
@@ -43,6 +50,8 @@
 			itemid.value = id
 			console.log(itemid.value)
 		})
+		
+
 </script>
 
 <style>

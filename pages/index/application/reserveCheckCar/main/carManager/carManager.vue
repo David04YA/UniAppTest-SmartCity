@@ -15,6 +15,7 @@
 <script setup>
 import { ref } from 'vue';
 import { getRequest , getToken } from '../../../../../../utils/request';
+import {onShow} from '@dcloudio/uni-app'
 
 	const carList = ref();
 	// const token = await getToken();
@@ -37,8 +38,8 @@ import { getRequest , getToken } from '../../../../../../utils/request';
 		if(res.code == 200){
 			uni.showToast({
 				title:'删除成功',
-				
 			})
+			getBangCarList()
 		}
 	}
 	
@@ -61,6 +62,10 @@ import { getRequest , getToken } from '../../../../../../utils/request';
 			url:'/pages/index/application/reserveCheckCar/main/carManager/changeCar?id='+id
 		})
 	}
+	
+	onShow(()=>{
+		getBangCarList()
+	})
 </script>
 
 <style>

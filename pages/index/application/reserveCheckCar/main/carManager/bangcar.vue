@@ -27,6 +27,14 @@ import { getRequest , getToken } from '../../../../../../utils/request';
 					'type':type.value
 				}
 			})
+			console.log(res)
+			if(res.code==200){
+				uni.navigateBack(-1)
+			}else{
+				uni.showToast({
+					title:'请求失败'
+				})
+			}
 		}else{
 			uni.showToast({
 				title:'请输入完整'

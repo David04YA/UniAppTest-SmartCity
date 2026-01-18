@@ -2,7 +2,7 @@
 	<view>
 
 		<button @click="carManager()">车辆管理</button>
-		<!-- <button @click="bangoCar()">车辆绑定</button> -->
+		<button @click="reserveCar()">立即预约</button>
 	</view>
 </template>
 
@@ -13,9 +13,9 @@
 		})
 	}
 	
-	const bangoCar = ()=>{
+	const reserveCar = ()=>{
 		uni.navigateTo({
-			url:'/pages/index/application/reserveCheckCar/main/carManager/bangcar'
+			url:'/pages/index/application/reserveCheckCar/main/carReserve/carReserve'
 		})
 	}
 </script>
