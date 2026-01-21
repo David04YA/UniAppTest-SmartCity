@@ -142,7 +142,9 @@ const handleBanner = (item) => {
 }
 
 function allser() {
-    uni.navigateTo({ url: '/pages/services/services' });
+    uni.switchTab({
+    	url:'/pages/services/services',
+    })
 }
 
 onMounted(() => {

@@ -13,7 +13,7 @@
 		<!-- vif实现显示隐藏 -->
         <view v-if="index === guideImages.length - 1" class="button-group">
           <button class="btn setting-btn" @click="openNetworkSetting">网络设置</button>
-          <button class="btn enter-btn" @click="launchApp">进入应用</button>
+          <button class="btn enter-btn" @click="launchApp()">进入应用</button>
         </view>
     </swiper-item>
       
@@ -22,7 +22,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import {onMounted, ref } from 'vue';
+import request from '@/utils/request.js'
 
 // 定义数组,数组里每个元素是一个url
 const guideImages = ref([
@@ -63,6 +64,41 @@ const launchApp = () => {
     url: '../index/index'
   });
 };
+
+	
+
+const gettoken = async () => {
+    try {
+        // 1. 发送 POST 请求，注意 data 是一个对象，不需要手动拼字符串
+        const res = await request({
+            url: '/prod-api/api/login',
+            method: 'POST',
+            data: {
+                "username": "test01",
+                "password": "123456"
+            }
+        });
+		
+        // 2. 检查返回数据并存储 Token
+        // 注意：根据若依接口习惯，token 通常在 res.token 或 res.data.token
+        if (res.code === 200) {
+            const token = res.token; 
+            
+            // 【核心步】存储到本地缓存，key 叫 'token'
+            uni.setStorageSync('token', token);
+            
+            console.log('Token 存储成功:', token);
+            
+            uni.showToast({ title: '登录成功', icon: 'success' });
+        }
+    } catch (err) {
+        console.error('登录失败了', err);
+        uni.showToast({ title: '登录失败', icon: 'none' });
+    }
+}
+onMounted(()=>{
+	gettoken()
+})
 </script>
 
 <style lang="scss" scoped>

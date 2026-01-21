@@ -35,6 +35,12 @@
 			"style": {
 				"navigationBarTitleText": ""
 			}
+		},
+		{
+			"path": "pages/services/services2/library",
+			"style": {
+				"navigationBarTitleText": ""
+			}
 		}
 		
 	],
