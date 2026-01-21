@@ -51,155 +51,107 @@
 
 <script setup>
 import {onMounted, ref} from 'vue';
-// import request from '@/utils/request.js';
+// import request from '@/utils/request.js'
+import request from '@/utils/request.js'; 
 
-const baseUrl='http://121.9.253.236:10001';
+const baseUrl = 'http://121.9.253.236:10001';
 const bannerList = ref([]);
-const serviceList=ref([]);
-const topicList=ref([]);
-const newsList=ref([])
-// const getBanners = async () =>{
-// 	const data = await request('/banner');
-// 	bannerList.value = data;
-// }
+const serviceList = ref([]);
+const topicList = ref([]);
+const newsList = ref([]);
+const ParkingList = ref([]);
 
-const getBanners = () => {uni.request({
-	url: `${baseUrl}/prod-api/api/rotation/list?type=2`,
-	method: 'GET',
-	data: {},
-	success: (res) => {
-		if(res.data.code === 200){
-			// console.log(res.data)
-			bannerList.value = res.data.rows.map((item,index) =>{
-				let targetPath = '/pages/index/index'
-				
-					if (index === 0){
-						targetPath = '/pages/index/index'
-					}
-					else if (index === 1){
-						targetPath = '/pages/services/services'
-					}
-					else if (index === 2){
-						targetPath = '/pages/news/news'
-					}
-					else if (index === 3){
-						targetPath = '/pages/services/services'
-					}
-				
-				// return一个新对象,这个对象我们写了四个属性 id...
-				return{
-					id:item.id,
-					image:baseUrl+item.advImg,
-					title:item.advTitle,
-					target: targetPath  //实现不同的跳转
-				}
-			})
-		}
-	},
-	fail: () => {},
-	complete: () => {}
-});}
-const getServices = () => {
-	uni.request({
-		url: baseUrl+'/prod-api/api/service/list',
-		method: 'GET',
-		data: {},
-		success: res => {
-			// console.log(res.data)
-			// serviceList.value=res.data.rows.map((item,index) =>{
-				const sortedRows = res.data.rows.sort((a,b)=> a.id-b.id);
-				// .map() .sort()
-				serviceList.value = sortedRows.map(item => {
-					return {
-						id:item.id,
-						image:baseUrl +item.imgUrl,
-						name:item.serviceName
-					}
-				}).slice(0,9);
-				
-		},
-		fail: () => {},
-		complete: () => {}
-	});
+
+const getBanners = async () => {
+    try {
+        const res = await request({
+            url: '/prod-api/api/rotation/list?type=2'
+        });
+        bannerList.value = res.rows.map((item, index) => {
+            // 实现不同的跳转逻辑
+            const paths = ['/pages/index/index', '/pages/services/services', '/pages/news/news', '/pages/services/services'];
+            return {
+                id: item.id,
+                image: baseUrl + item.advImg,
+                title: item.advTitle,
+                target: paths[index] || '/pages/index/index'
+            }
+        });
+    } catch (err) { console.error("轮播图加载失败", err); }
 }
-const getnews = ()=>{
-	uni.request({
-		url: baseUrl+'/prod-api/press/press/list',
-		method: 'GET',
-		data: {},
-		success: res => {
-			console.log(res.data)
-			newsList.value=res.data.rows.map(item =>{
-				return{
-					img:baseUrl+item.cover,
-					name:item.title,
-					content:item.content,
-					readsum:item.readNum,
-					time:item.publishDate
-				}
-				
-			})
-			
-		},
-		fail: () => {},
-		complete: () => {}
-	});
+
+
+const getServices = async () => {
+    try {
+        const res = await request({ url: '/prod-api/api/service/list' });
+        const sortedRows = res.rows.sort((a, b) => a.id - b.id);
+        serviceList.value = sortedRows.map(item => ({
+            id: item.id,
+            image: baseUrl + item.imgUrl,
+            name: item.serviceName
+        })).slice(0, 9);
+    } catch (err) { console.error("服务列表加载失败", err); }
+}
+
+const getnews = async () => {
+    try {
+        const res = await request({ url: '/prod-api/press/press/list' });
+        newsList.value = res.rows.map(item => ({
+            img: baseUrl + item.cover,
+            name: item.title,
+            content: item.content,
+            readsum: item.readNum,
+            time: item.publishDate
+        }));
+    } catch (err) { console.error("新闻列表加载失败", err); }
+}
+
+
+const thetopic = async () => {
+    try {
+        const res = await request({ url: '/prod-api/api/takeout/theme/list' });
+        topicList.value = res.data.map(item => ({
+            image: baseUrl + item.imgUrl,
+            name: item.themeName,
+        }));
+    } catch (err) { console.error("主题加载失败", err); }
+}
+
+
+const getparking = async () => {
+    try {
+        const res = await request({ url: '/prod-api/api/park/lot/list' });
+        // 按距离排序：最近优先
+        const sorted = res.rows.sort((a, b) => a.distance - b.distance);
+        ParkingList.value = sorted.map(item => ({
+            id: item.id,
+            name: item.parkName,
+            vacancy: item.vacancy,
+            address: item.address,
+            price: item.priceCaps,
+            distance: item.distance
+        }));
+    } catch (err) { console.error("停车场加载失败", err); }
 }
 
 const handleBanner = (item) => {
-	// console.log(item.target)
-	uni.navigateTo({
-		url:item.target,
-		fail: () => {
-			uni.switchTab({
-				url:item.target
-			});
-		}
-	});
+    uni.navigateTo({
+        url: item.target,
+        fail: () => uni.switchTab({ url: item.target })
+    });
 }
 
-const thetopic = () => {
-	uni.request({
-		url: baseUrl+'/prod-api/api/takeout/theme/list',
-		method: 'GET',
-		data: {},
-		success: res => {
-			// console.log(res.data)
-			topicList.value=res.data.data.map(item => {
-				return{
-					image:baseUrl+item.imgUrl,
-					name:item.themeName,
-				}
-			})
-		},
-		fail: () => {},
-		complete: () => {}
-	});
+function allser() {
+    uni.navigateTo({ url: '/pages/services/services' });
 }
 
-function allser (){
-	uni.navigateTo({
-		url: '/pages/services/services',
-		success: res => {},
-		fail: () => {},
-		complete: () => {}
-	});
-}
-
-const handleTopic=(item) =>{
-	uni.navigateTo({
-		url: '/pages/topic',
-		success: res => {},
-		fail: () => {},
-		complete: () => {}
-	});
-};
-onMounted(()=> {
-		getBanners();
-		getServices();
-		thetopic();
-		getnews();
-	});
+onMounted(() => {
+    getBanners();
+    getServices();
+    thetopic();
+    getnews();
+    getparking();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -297,11 +249,11 @@ onMounted(()=> {
 						 
 						 //当屏幕宽度大于768px时
 						 @media screen  and (min-width:768rpx){
-						 	width:23% //每行4个
+						 	width:22% //每行4个
 						 }
 						 .topic-img{
-							 width: 100%;
-							 height: 200rpx;
+							 width: 100rpx;
+							 height:100rpx;
 							 border-radius: 40rpx;
 						 }
 						 .ellipsis{
@@ -311,7 +263,7 @@ onMounted(()=> {
 						 }
 					}
 					}
-			.allnews{
+	.allnews{
 				width: 100%;
 				padding: 20rpx;
 				background-color: #fff;
@@ -347,7 +299,7 @@ onMounted(()=> {
 					margin-top: 15rpx;
 				}
 				
-					.newscontent {
+				.newscontent {
 					    font-size: 24rpx;
 					    color: #666;
 					    line-height: 1.5;
@@ -367,5 +319,6 @@ onMounted(()=> {
 					margin-left: 20rpx;
 					
 				}
+				
 				}
 </style>
