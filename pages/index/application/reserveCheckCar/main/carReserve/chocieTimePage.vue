@@ -1,3 +1,4 @@
+<!-- 废弃 -->
 <template>
 	<view>
 		<button @click="addTime">设置时间</button>

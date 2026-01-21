@@ -27,6 +27,7 @@
 
 	
 	const start = async() =>{
+		// 接口有问题
 		const res = getRequest({
 			url:'/prod-api/api/traffic/checkCar/grt',
 			header:{"Authorization":await getToken()}

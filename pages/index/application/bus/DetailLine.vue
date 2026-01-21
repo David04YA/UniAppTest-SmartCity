@@ -43,23 +43,29 @@ import { getRequest } from '../../../../utils/request';
 
 	const line = ref()
 	const pageNum =  ref(1)
+	// 获取的路线一直为1 error
 	const busLines = ref(1)
 	const bus = ref()
 	// 响应式获取页码，页码发生变化时重新获得站点信息
-	const getStopListUrl = reactive({
-		url:"/prod-api/api/bus/stop/list?linesId="+busLines.value+"&pageNum="+pageNum.value+"&pageSize=8",
-	})
+	// const getStopListUrl = reactive({
+	// 	url:"/prod-api/api/bus/stop/list?linesId="+busLines.value+"&pageNum="+pageNum.value+"&pageSize=8",
+	// })
 	
 	
 	const StopNextPage = async ()=>{
-		pageNum.value++
-		getStopList()
+		try{
+			pageNum.value++
+			getStopList()
+		}catch(error){
+			throw error
+		}
 	}
 	
 	const getStopList = async()=>{
 		try{
 			const res = await getRequest({
-				url:getStopListUrl.url,
+				// url:getStopListUrl.url,
+				url:"/prod-api/api/bus/stop/list?linesId="+busLines.value+"&pageNum="+pageNum.value+"&pageSize=8",
 				header:{"Content-Type":"application/x-www-form-urlencoded"}
 			})
 			bus.value = res.rows
@@ -72,10 +78,16 @@ import { getRequest } from '../../../../utils/request';
 
 	onLoad((options)=>{
 		busLines.value=options.id
+		// uni.setStorageSync("BusLineId", options.id)
+		// setLineId(options.id)
 		console.log(busLines.value),
 		getLine(options.id)
-		
+		console.log(options)
 	})
+	
+	const setLineId = (id)=>{
+		busLines.value = id
+	}
 
 	
 	

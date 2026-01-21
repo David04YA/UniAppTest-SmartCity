@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<button @click="mineReserve">我的预约</button>
 		<view style="text-align: center;">已绑定车</view>
 		<view v-for="item in bangoCarList" :key="item.id">
 			<view>车牌号:{{item.plateNo}}</view>
@@ -17,6 +18,11 @@ import { ref } from 'vue';
 
 	// onLoad()
 	const bangoCarList = ref()
+	const mineReserve = ()=>{
+		uni.navigateTo({
+			url:"/pages/index/application/reserveCheckCar/main/carReserve/mineReserve"
+		})
+	}
 	const getBangoCarList = async() =>{
 		const res = await getRequest({
 			url:"/prod-api/api/traffic/car/list",
@@ -46,7 +52,8 @@ import { ref } from 'vue';
 	const choiceTime = (car)=>{
 		// console.log(car)
 		uni.redirectTo({
-			url:"/pages/index/application/reserveCheckCar/main/carReserve/addCheckCar?carId="+car.id
+			// url:"/pages/index/application/reserveCheckCar/main/carReserve/addCheckCar?carId="+car.id
+			url:"/pages/index/application/reserveCheckCar/main/carReserve/choiceLocation?carId="+car.id
 		})
 	} 
 </script>

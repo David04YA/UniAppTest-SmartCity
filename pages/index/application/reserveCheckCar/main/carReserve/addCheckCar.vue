@@ -1,3 +1,4 @@
+<!-- 废弃 -->
 <template>
 	<view>
 		<view style="text-align: center;s">你要约的车为：{{carid}}</view>

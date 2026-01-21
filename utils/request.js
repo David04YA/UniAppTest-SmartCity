@@ -35,14 +35,14 @@ const requesttests = (url, method = 'GET', data = {}) => {
 // export default request;
 
 
-const getUrl = () => {
+export const getUrl = () => {
 	const ip = uni.getStorageSync('server_ip') || '121.9.253.236';
 	const port = uni.getStorageSync('server_port') || '10001';
 	return `http://${ip}:${port}`; 
 };
 
 // 方便测试，直接获取token
-export const getToken = async (username = 'test01' , password = '123456') =>{
+export const getToken = async (username = 'test01' , password = '654321') =>{
 	const token = uni.getStorageSync('token')
 	if (token){
 		return token;
