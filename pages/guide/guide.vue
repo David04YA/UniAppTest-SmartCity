@@ -75,7 +75,7 @@ const gettoken = async () => {
             method: 'POST',
             data: {
                 "username": "test01",
-                "password": "123456"
+                "password": "654321"
             }
         });
 		

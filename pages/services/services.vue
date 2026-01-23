@@ -33,7 +33,7 @@ import request from '@/utils/request.js';
 	        // 这里就是第 19 个服务的逻辑
 	        console.log('你点击了第 19 个服务：', item.name);
 	        uni.navigateTo({
-	            url: '/pages/services/services2/library' // 跳转到特定页面
+	            url: '/pages/services/services2/library/library' // 跳转到特定页面
 	        });
 	    }
 		}	

@@ -59,7 +59,7 @@ const bannerList = ref([]);
 const serviceList = ref([]);
 const topicList = ref([]);
 const newsList = ref([]);
-const ParkingList = ref([]);
+
 
 
 const getBanners = async () => {
@@ -118,21 +118,7 @@ const thetopic = async () => {
 }
 
 
-const getparking = async () => {
-    try {
-        const res = await request({ url: '/prod-api/api/park/lot/list' });
-        // 按距离排序：最近优先
-        const sorted = res.rows.sort((a, b) => a.distance - b.distance);
-        ParkingList.value = sorted.map(item => ({
-            id: item.id,
-            name: item.parkName,
-            vacancy: item.vacancy,
-            address: item.address,
-            price: item.priceCaps,
-            distance: item.distance
-        }));
-    } catch (err) { console.error("停车场加载失败", err); }
-}
+
 
 const handleBanner = (item) => {
     uni.navigateTo({

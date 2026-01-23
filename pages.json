@@ -36,8 +36,32 @@
 				"navigationBarTitleText": ""
 			}
 		},
+		// {
+		// 	"path": "pages/services/services2/library",
+		// 	"style": {
+		// 		"navigationBarTitleText": ""
+		// 	}
+		// },
 		{
-			"path": "pages/services/services2/library",
+			"path": "pages/services/services2/park/park",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/services2/library/library",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/services2/library/librarycomment/librarycomment",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/services2/huodong/huodong",
 			"style": {
 				"navigationBarTitleText": ""
 			}
