@@ -15,7 +15,7 @@
 		{
 			"path": "pages/services/services",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "服务"
 			}
 		},
 		{
@@ -27,7 +27,7 @@
 		{
 			"path": "pages/news/news",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "新闻"
 			}
 		},
 		{
@@ -146,6 +146,96 @@
 		},
 		{
 			"path": "pages/index/application/garbage/garbage",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/news/newDetail/newDetail",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/application/govService/govService",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/application/govService/advDetail",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/application/govService/mineAdvice",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/application/bus/createOrder/createOrder",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/application/garbage/grabageDetail",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/application/govService/mineAdviceDetail",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/help/job/job",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/help/job/companyDetail/companyDetail",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/help/job/resume/resume",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/help/job/resume/resumeDetail",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/help/job/resume/addResume",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/help/job/deliver/deliver",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/help/job/deliver/addDeliver",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/guide/login",
 			"style": {
 				"navigationBarTitleText": ""
 			}

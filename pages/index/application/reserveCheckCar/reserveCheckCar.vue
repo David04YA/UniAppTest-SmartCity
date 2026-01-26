@@ -14,7 +14,7 @@
 <script setup>
 	import { onReachBottom } from '@dcloudio/uni-app';
 	import { ref } from 'vue';
-	import { getRequest , getToken } from '../../../../utils/request';
+	import  getRequest ,{ getToken } from '../../../../utils/request';
 	
 	
 	onReachBottom(()=>{

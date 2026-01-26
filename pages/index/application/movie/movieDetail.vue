@@ -16,7 +16,7 @@
 <script setup>
 	import {onLoad} from '@dcloudio/uni-app'
 import { ref } from 'vue';
-import { getRequest , getUrl } from '../../../../utils/request';
+import  getRequest ,{ getUrl } from '../../../../utils/request';
 	onLoad((options)=>{
 		const movieId = options.id
 		getMovieDetail(movieId)

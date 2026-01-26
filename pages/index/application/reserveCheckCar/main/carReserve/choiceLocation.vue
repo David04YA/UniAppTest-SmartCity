@@ -28,7 +28,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { getRequest ,getToken } from '../../../../../../utils/request';
+import  getRequest , { getToken } from '../../../../../../utils/request';
 import {onLoad , onShow} from '@dcloudio/uni-app'
 
  	const carid =  ref()

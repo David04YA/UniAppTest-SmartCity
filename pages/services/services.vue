@@ -1,28 +1,45 @@
 <template>
-	<view class="">
-		<!-- <button @click="searchService">搜索</button> -->
+<!-- 	<view class="">
 		<input v-model="searchText" placeholder="请输入你要搜索的任务" style="text-align: center;"></input>
 		<p v-for="(item , key) in  serviceArr" style="display: flow-root;">
 			<view class="" style="border-bottom:1px gray solid; text-align: center; font-size: 20px; font-weight: bold; ">
 				{{key}}
 			</view>
-			<p v-for="it in item">
-				<p style="float: left;">
-					<image style="height: 100px; width: 100px;" :src="'http://121.9.253.236:10001'+it.imgUrl"/>
+			<p v-for="it in item" style="text-align: center;">
+				<p style="float: left;height: 100px; width: 20%; padding: 5px;" @click="onclick(it.id)">
+					<image style="height: 60px;width: 80%;" :src="'http://121.9.253.236:10001'+it.imgUrl"/>
 					<p style="text-align: center;">{{it.serviceName}}</p>
+
 				</p>
 			</p>
+		</p>
+	</view> -->
+	<view class="">
+		<input v-model="searchText" placeholder="请输入你要搜索的任务" style="text-align: center;"></input>
+		<p v-for="(item , key) in  serviceArr" style="display: flow-root;">
+			<view class="" style="border-bottom:1px gray solid; text-align: center; font-size: 20px; font-weight: bold; ">
+				{{key}}
+			</view>
+			<view style="display: flex;flex: 0 1 20%;flex-wrap: wrap;justify-content: center;">
+				<view v-for="it in item" style="text-align: center;">
+					<view style="display: flex; flex-direction: column; height: 100px; width: 100px; padding: 5px; " @click="onclick(it.id)">
+						<image style="height: 60px;width: 60px; display: block;"  :src="'http://121.9.253.236:10001'+it.imgUrl"/>
+						<view style="display: inline;align-items: center;transform: translateX(-20px);">{{it.serviceName}}</view>
+					
+					</view>
+				</view>
+			</view>
 		</p>
 	</view>
 </template>
 
 <script setup>
 import { ref ,watch } from 'vue';
-import { getRequest } from '../../utils/request';
+import  getRequest  from '../../utils/request';
 
 const serviceArr = ref({})
 let list = ref([])
-let originList = ref([])
+const originList = ref([])
 const searchText = ref('')
 
 		const searchService = ()=>{
@@ -55,14 +72,33 @@ const searchText = ref('')
 		serviceList()
 
 		watch(searchText , (newValue)=>{
+			// console.log(newValue)
 			if (searchText.value.trim() == ''){
-				Type(originList)
+				Type(originList.value)
 			}else{
 				list.value = originList.value.filter(item => item.serviceName == searchText.value)
 				Type(list.value)
-				console.log(serviceArr.value)
+				// console.log(serviceArr.value)
 			}
 		},50)
+		
+		const onclick = (id)=>{
+			if(id == 3){
+				uni.navigateTo({
+					url:'/pages/index/application/bus/bus'
+				})
+			}
+			if(id == 35){
+				uni.navigateTo({
+					url:'/pages/services/application/govService/govService'
+				})
+			}
+			if(id == 36){
+				uni.navigateTo({
+					url:'/pages/index/application/garbage/garbage'
+				})
+			}
+		}
 
 		
 		

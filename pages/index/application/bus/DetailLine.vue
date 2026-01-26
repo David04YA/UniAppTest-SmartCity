@@ -26,71 +26,76 @@
 	<!-- 某一线路的站点 -->
 	<view>
 		<view class="" v-for="item in bus" :key="item.stepsId">
-			<button @click="detailStop(item.stepsId)">{{item.name}}站</button>
+			<button :disabled="true">{{item.name}}</button>
 		</view>
-		<view class="">
+<!-- 		<view class="">
 			当前页码为:{{pageNum}}
 		</view>
-		<button @click="StopNextPage">下一页</button>
+		<button @click="StopNextPage">下一页</button> -->
+		<!-- <view>{{maxPage}}</view> -->
+		<view style=" justify-content: center; text-align: center;">
+			<button @click="StopNextPage(item)" v-for="item in maxPage" style="height: 30px; width: 30px; display: inline-block; border: 1px solid aquamarine; background-color: aquamarine; margin:10px;" >{{item}}</button>
+		</view>
 	</view>
+	<button @click="createOrder()">就这条线了</button>
 	</view>
 </template>
 
 <script setup>
 import { ref  , reactive } from 'vue';
 import {onLoad} from '@dcloudio/uni-app'
-import { getRequest } from '../../../../utils/request';
+import  getRequest  from '../../../../utils/request';
 
 	const line = ref()
 	const pageNum =  ref(1)
-	// 获取的路线一直为1 error
-	const busLines = ref(1)
+	let busLines ;
+	const maxPage = ref(1)
 	const bus = ref()
-	// 响应式获取页码，页码发生变化时重新获得站点信息
-	// const getStopListUrl = reactive({
-	// 	url:"/prod-api/api/bus/stop/list?linesId="+busLines.value+"&pageNum="+pageNum.value+"&pageSize=8",
-	// })
+	const pageSize = ref(4)
 	
+	const createOrder = () =>{
+		uni.navigateTo({
+			url:'/pages/index/application/bus/createOrder/createOrder?id='+busLines
+		})
+	}
 	
-	const StopNextPage = async ()=>{
+	const StopNextPage = async (id)=>{
 		try{
-			pageNum.value++
+			pageNum.value = id
 			getStopList()
 		}catch(error){
 			throw error
 		}
 	}
 	
+	
+	
+	
 	const getStopList = async()=>{
 		try{
 			const res = await getRequest({
 				// url:getStopListUrl.url,
-				url:"/prod-api/api/bus/stop/list?linesId="+busLines.value+"&pageNum="+pageNum.value+"&pageSize=8",
+				url:"/prod-api/api/bus/stop/list?linesId="+busLines+"&pageNum="+pageNum.value+"&pageSize="+pageSize.value,
 				header:{"Content-Type":"application/x-www-form-urlencoded"}
 			})
 			bus.value = res.rows
-			console.log(res.rows)
+			console.log(res.total)
+			maxPage.value = ( res.total % pageSize.value) ? Math.floor(res.total / pageSize.value) + 1  :  res.total / pageSize.value 
+		
+			// console.log(res.rows)
 		}catch(error){
 			throw error
 		}
 	}
-	getStopList()
+
 
 	onLoad((options)=>{
-		busLines.value=options.id
-		// uni.setStorageSync("BusLineId", options.id)
-		// setLineId(options.id)
-		console.log(busLines.value),
+		busLines = options.id
 		getLine(options.id)
 		console.log(options)
+		getStopList()
 	})
-	
-	const setLineId = (id)=>{
-		busLines.value = id
-	}
 
-	
-	
 	
 	const getLine = async(id) =>{
 		try{
@@ -113,14 +118,13 @@ import { getRequest } from '../../../../utils/request';
 			title:"还没做",
 			icon:"none"
 		})
-		// uni.navigateTo({
-		// 	url:'/pages/index/application/bus/DetailLine?id='+id,
-		// })
 	}
 	
 
 </script>
 
 <style>
-	       
+   .active{
+	   background: greenyellow;
+   }
 </style>

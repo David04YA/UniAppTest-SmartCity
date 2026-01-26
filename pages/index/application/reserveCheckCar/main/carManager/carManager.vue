@@ -14,7 +14,7 @@
 	
 <script setup>
 import { ref } from 'vue';
-import { getRequest , getToken } from '../../../../../../utils/request';
+import  getRequest , { getToken } from '../../../../../../utils/request';
 import {onShow} from '@dcloudio/uni-app'
 
 	const carList = ref();

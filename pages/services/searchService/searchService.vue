@@ -13,7 +13,7 @@
 
 <script setup>
 import { computed, ref ,watch } from 'vue';
-import { getRequest } from '../../../utils/request';
+import  getRequest  from '../../../utils/request';
 
 	const list = ref([])
 	let resultList = []

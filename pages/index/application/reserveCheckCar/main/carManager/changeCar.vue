@@ -10,7 +10,7 @@
 <script setup>
 	import { ref } from 'vue';
 	import { onLoad , onShow } from '@dcloudio/uni-app';
-	import { getRequest , getToken } from '../../../../../../utils/request';
+	import  getRequest ,{ getToken } from '../../../../../../utils/request';
 	
 	
 		const engineNo = ref('')

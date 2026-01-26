@@ -12,7 +12,7 @@
 <script setup>
 	
 import { ref } from 'vue';
-import { getRequest , getToken } from '../../../../../../utils/request';
+import  getRequest , { getToken } from '../../../../../../utils/request';
 
  	const mineReserveList = ref()
 	const getList = async()=>{

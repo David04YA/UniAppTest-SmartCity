@@ -20,8 +20,8 @@
 </template>
 
 <script setup>
-import { ref ,watch } from 'vue';
-import { getRequest } from '../../../../utils/request';
+import { ref ,watch  } from 'vue';
+import  getRequest  from '../../../../utils/request';
 
 	const searchIsAct = ref(false)
 	const advList = ref([])

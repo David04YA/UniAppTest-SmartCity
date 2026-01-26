@@ -7,13 +7,13 @@
 
 <script setup>
 	import { ref , reactive , watch } from 'vue';
-	import { getRequest } from '../../../../utils/request';
+	import getrequest from '../../../../utils/request';
 
 	const line = ref()
 
 	const getLineList = async()=>{
 		try{
-			const res = await getRequest({
+			const res = await getrequest({
 				url:"/prod-api/api/bus/line/list"
 			})
 			line.value = res

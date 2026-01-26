@@ -13,7 +13,7 @@
 
 <script setup>
 	import {onLoad} from '@dcloudio/uni-app'
-import { getRequest , getToken } from '../../../../../../utils/request';
+import  getRequest ,{ getToken } from '../../../../../../utils/request';
 import { ref } from 'vue';
 
 	// onLoad()
