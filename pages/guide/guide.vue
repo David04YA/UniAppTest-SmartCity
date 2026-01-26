@@ -66,36 +66,54 @@ const launchApp = () => {
 };
 
 	
-
 const gettoken = async () => {
     try {
-        // 1. 发送 POST 请求，注意 data 是一个对象，不需要手动拼字符串
         const res = await request({
             url: '/prod-api/api/login',
             method: 'POST',
+            header: { 'Authorization': '' },
             data: {
-                "username": "test01",
-                "password": "654321"
+                "username": "test01", 
+                "password": "654321" 
             }
         });
-		
-        // 2. 检查返回数据并存储 Token
-        // 注意：根据若依接口习惯，token 通常在 res.token 或 res.data.token
+
+        // 核心修改：res 是 request.js 里 resolve(res.data) 出来的结果
         if (res.code === 200) {
-            const token = res.token; 
+            // 1. 将 Token 存入缓存，key 必须叫 'token' (要跟 request.js 保持一致)
+            uni.setStorageSync('token', res.token);
             
-            // 【核心步】存储到本地缓存，key 叫 'token'
-            uni.setStorageSync('token', token);
-            
-            console.log('Token 存储成功:', token);
-            
-            uni.showToast({ title: '登录成功', icon: 'success' });
+            console.log('Token 存储成功，新 Token 为:', res.token);
+            uni.showToast({ title: '身份验证成功', icon: 'success' });
+        } else {
+            uni.showToast({ title: res.msg || '登录失败', icon: 'none' });
         }
     } catch (err) {
-        console.error('登录失败了', err);
-        uni.showToast({ title: '登录失败', icon: 'none' });
+        console.error('登录请求异常:', err);
     }
 }
+
+
+// const gettoken = async () => {
+//     try {
+//         const res = await request({
+//             url: '/prod-api/api/login',
+//             method: 'POST',
+//
+//             header: {
+//                 'Authorization': '' 
+//             },
+//             data: {
+//                 "username": "test01",
+//                 "password": "654321" 
+//             }
+//         });
+		
+//         // ... 后续逻辑
+//     } catch (err) {
+//         console.error('登录失败', err);
+//     }
+// }
 onMounted(()=>{
 	gettoken()
 })

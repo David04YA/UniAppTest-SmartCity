@@ -14,6 +14,22 @@ import { onMounted, ref } from 'vue';
 import request from '@/utils/request.js';
 	const serviceList=ref([])
 	const baseUrl = 'http://121.9.253.236:10001';
+	
+	const serviceRoutes={
+		'找工作':'/pages/help/job/job',
+		'政府服务热线':'/pages/services/application/govService/govService',
+		'找房子':'/pages/services/services-hub/house/house',
+		'活动管理':'/pages/services/services-hub/huodong/huodong',
+		'数字图书馆':'/pages/services/services-hub/library/library',
+		'停哪儿':'/pages/services/services-hub/park/park',
+		'智慧巴士':'/pages/services/subwayService/subwayService',
+		'志愿服务':'/pages/services/volunteerService/volunteerService',
+		'看电影':'/pages/services/watchMovies/main',
+		'垃圾分类':'/pages/index/application/garbage/garbage',
+		'智慧交管':'/pages/index/application/reserveCheckCar/reserveCheckCar',
+		
+	};
+	
 	const getServices = async () => {
 	    try {
 			
@@ -29,14 +45,22 @@ import request from '@/utils/request.js';
 	}
 	
 	const handleServiceClick = (item, index) => {
-	    if (index === 18) {
-	        // 这里就是第 19 个服务的逻辑
-	        console.log('你点击了第 19 个服务：', item.name);
-	        uni.navigateTo({
-	            url: '/pages/services/services2/library/library' // 跳转到特定页面
-	        });
-	    }
-		}	
+	    const url = serviceRoutes[item.name];
+	        
+	        if (url) {
+	            console.log(`正在跳转至：${item.name}`, url);
+	            uni.navigateTo({ url });
+	        } else {
+	            // 如果这个服务你还没写页面，可以给个提示
+	            console.warn(`服务 [${item.name}] 暂未配置跳转路径`);
+	            uni.showToast({
+	                title: '该服务开发中...',
+	                icon: 'none'
+	            });
+	        }
+	    };
+	
+	
 	onMounted(()=>{
 		getServices();
 	})
