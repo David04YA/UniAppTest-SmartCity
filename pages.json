@@ -36,6 +36,43 @@
 				"navigationBarTitleText": ""
 			}
 		},
+		
+		{
+			"path": "pages/services/services-sub/park/park",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/services-sub/library/library",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/services-sub/library/librarycomment/librarycomment",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/services-sub/huodong/huodong",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/services-sub/love/love",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/services-sub/house/house",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
 		{
 			"path": "pages/index/application/bus/bus",
 			"style": {
@@ -236,6 +273,115 @@
 		},
 		{
 			"path": "pages/guide/login",
+			"path": "pages/homepage/userDetail",
+			"style": {
+				"navigationBarTitleText": "个人信息页"
+			}
+		},
+		{
+			"path": "pages/homepage/orderList",
+			"style": {
+				"navigationBarTitleText": "订单列表页"
+			}
+		},
+		{
+			"path": "pages/homepage/changePwd",
+			"style": {
+				"navigationBarTitleText": "修改密码"
+			}
+		},
+		{
+			"path": "pages/homepage/feedback",
+			"style": {
+				"navigationBarTitleText": "意见反馈"
+			}
+		},
+		{
+			"path": "pages/homepage/out",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/homepage/orderListContent/listAll",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/homepage/orderListContent/orderClassify",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/watchMovies/main",
+			"style": {
+				"navigationBarTitleText": "电影信息页"
+			}
+		},
+		{
+			"path": "pages/services/watchMovies/moreMovies",
+			"style": {
+				"navigationBarTitleText": "更多信息"
+			}
+		},
+		{
+			"path": "pages/services/watchMovies/comcreteMovies",
+			"style": {
+				"navigationBarTitleText": "具体信息"
+			}
+		},
+		{
+			"path": "pages/services/volunteerService/volunteerService",
+			"style": {
+				"navigationBarTitleText": "新闻页面"
+			}
+		},
+		{
+			"path": "pages/services/volunteerService/volunteerActivity",
+			"style": {
+				"navigationBarTitleText": "志愿活动"
+			}
+		},
+		{
+			"path": "pages/services/volunteerService/myActivity",
+			"style": {
+				"navigationBarTitleText": "我的活动"
+			}
+		},
+		{
+			"path": "pages/services/volunteerService/moreMessage",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/services/subwayService/subwayService",
+			"style": {
+				"navigationBarTitleText": "地铁信息"
+			}
+		},
+		{
+			"path": "pages/services/subwayService/lineMessage",
+			"style": {
+				"navigationBarTitleText": "线路图"
+			}
+		},
+		{
+			"path": "pages/services/subwayService/subwayDetail",
+			"style": {
+				"navigationBarTitleText": "线路详情"
+			}
+		},
+		{
+			"path": "pages/services/analysisService/analysisService",
+			"style": {
+				"navigationBarTitleText": "数据分析"
+			}
+		}
+		,{
+			"path": "/pages/guide/login",
 			"style": {
 				"navigationBarTitleText": ""
 			}

@@ -13,7 +13,7 @@
 		<!-- vif实现显示隐藏 -->
         <view v-if="index === guideImages.length - 1" class="button-group">
           <button class="btn setting-btn" @click="openNetworkSetting">网络设置</button>
-          <button class="btn enter-btn" @click="launchApp">进入应用</button>
+          <button class="btn enter-btn" @click="launchApp()">进入应用</button>
         </view>
     </swiper-item>
       
@@ -22,7 +22,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import {onMounted, ref } from 'vue';
+import request from '@/utils/request.js'
 
 // 定义数组,数组里每个元素是一个url
 const guideImages = ref([
@@ -63,6 +64,59 @@ const launchApp = () => {
     url: '../index/index'
   });
 };
+
+	
+const gettoken = async () => {
+    try {
+        const res = await request({
+            url: '/prod-api/api/login',
+            method: 'POST',
+            header: { 'Authorization': '' },
+            data: {
+                "username": "test01", 
+                "password": "654321" 
+            }
+        });
+
+        // 核心修改：res 是 request.js 里 resolve(res.data) 出来的结果
+        if (res.code === 200) {
+            // 1. 将 Token 存入缓存，key 必须叫 'token' (要跟 request.js 保持一致)
+            uni.setStorageSync('token', res.token);
+            
+            console.log('Token 存储成功，新 Token 为:', res.token);
+            uni.showToast({ title: '身份验证成功', icon: 'success' });
+        } else {
+            uni.showToast({ title: res.msg || '登录失败', icon: 'none' });
+        }
+    } catch (err) {
+        console.error('登录请求异常:', err);
+    }
+}
+
+
+// const gettoken = async () => {
+//     try {
+//         const res = await request({
+//             url: '/prod-api/api/login',
+//             method: 'POST',
+//
+//             header: {
+//                 'Authorization': '' 
+//             },
+//             data: {
+//                 "username": "test01",
+//                 "password": "654321" 
+//             }
+//         });
+		
+//         // ... 后续逻辑
+//     } catch (err) {
+//         console.error('登录失败', err);
+//     }
+// }
+onMounted(()=>{
+	gettoken()
+})
 </script>
 
 <style lang="scss" scoped>

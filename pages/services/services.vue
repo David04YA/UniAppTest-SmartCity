@@ -105,5 +105,46 @@ const searchText = ref('')
 </script>
 
 <style lang="scss" scoped>
+.container{
+		display: flex;
+		// justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		//display justify-content align-items flex-direction
+		min-height: 100vh;
+		// min-height vh
+	}
+	.allservice{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		padding: 20rpx 0;
+		background-color: #fff;
+		padding: 30rpx 0; 
+		// flex:1;
+		// flex默认水平 wrap换行 flex1 扩张完剩下的画面
+			
+			.service-item{
+				width: 20%;
+				// height: 20%;
+				display: flex;
+				flex-direction: column;
+				//width20%每行5个 direciton 子元素垂直排列
+				margin-bottom: 40rpx;
+				// /下边距
+			}
+			
+			.serviceimg{
+				width: 80rpx;
+				height: 80rpx;
+				border-radius: 20rpx;
+				margin-bottom: 10rpx;
+			}
+			.servicename{
+				font-size: 24rpx;
+				color: #333;
+			}
+	}
 
 </style>
