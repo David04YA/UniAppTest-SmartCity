@@ -7,19 +7,19 @@
 		</swiper>
 		<view style="display: flex; justify-content: center;">
 			<view @click="job" style="float: left ; margin: 10px;">
-				<image src="/static/images/公司.svg" style="height: 60px;width: 60px;"></image>
+				<image src="/static/images/gongsi.svg" style="height: 60px;width: 60px;"></image>
 				<view style="color: gray;">去找工作</view>
 			</view>
 			<view @click="resume" style="float: left ; margin: 10px;">
-				<image src="/static/images/简历.svg" style="height: 60px;width: 60px;"></image>
+				<image src="/static/images/jianli.svg" style="height: 60px;width: 60px;"></image>
 				<view style="color: gray;">我的简历</view>
 			</view>
 			<view @click="deliver" style="float: left ; margin: 10px;">
-				<image src="/static/images/快速发信息.svg" style="height: 60px;width: 60px;"></image>
+				<image src="/static/images/xinxi.svg" style="height: 60px;width: 60px;"></image>
 				<view style="color: gray;">投的简历</view>
 			</view>
 			<view style="float: left ; margin: 10px;">
-				<image src="/static/images/扶贫.svg" style="height: 60px;width: 60px;"></image>
+				<image src="/static/images/fupin.svg" style="height: 60px;width: 60px;"></image>
 				<view @click="nothing()" style="color: gray;">招募消息</view>
 			</view>
 		</view>

@@ -22,7 +22,7 @@
 			</view>
 			<view style="display: flex;flex: 0 1 20%;flex-wrap: wrap;justify-content: center;">
 				<view v-for="it in item" style="text-align: center;">
-					<view style="display: flex; flex-direction: column; height: 100px; width: 100px; padding: 5px; " @click="onclick(it.id)">
+					<view style="display: flex; flex-direction: column; height: 100px; width: 100px; padding: 5px; " @click="handleServiceClick(it)">
 						<image style="height: 60px;width: 60px; display: block;"  :src="'http://121.9.253.236:10001'+it.imgUrl"/>
 						<view style="display: inline;align-items: center;transform: translateX(-20px);">{{it.serviceName}}</view>
 					
@@ -42,6 +42,37 @@ let list = ref([])
 const originList = ref([])
 const searchText = ref('')
 
+const serviceRoutes={
+		'找工作':'/pages/help/job/job',
+		'政府服务热线':'/pages/services/application/govService/govService',
+		'找房子':'/pages/services/services-sub/house/house',
+		'活动管理':'/pages/services/services-sub/huodong/huodong',
+		'数字图书馆':'/pages/services/services-sub/library/library',
+		'停哪儿':'/pages/services/services-sub/park/park',
+		'智慧巴士':'/pages/services/subwayService/subwayService',
+		'志愿服务':'/pages/services/volunteerService/volunteerService',
+		'看电影':'/pages/services/watchMovies/main',
+		'垃圾分类':'/pages/index/application/garbage/garbage',
+		'智慧交管':'/pages/index/application/reserveCheckCar/reserveCheckCar',
+		
+	};
+	
+	const handleServiceClick = (item, index) => {
+	    const url = serviceRoutes[item.serviceName];
+	        
+	        if (url) {
+	            console.log(`正在跳转至：${item.name}`, url);
+	            uni.navigateTo({ url });
+	        } else {
+	            // 如果这个服务你还没写页面，可以给个提示
+	            console.warn(`服务 [${item.name}] 暂未配置跳转路径`);
+	            uni.showToast({
+	                title: '该服务开发中...',
+	                icon: 'none'
+	            });
+	        }
+	    };
+	
 		const searchService = ()=>{
 			uni.navigateTo({
 				url:'/pages/services/searchService/searchService'
@@ -63,7 +94,7 @@ const searchText = ref('')
 				url:'/prod-api/api/service/list',
 				header:{'Context-Type':'application/x-www-form-urlencoded'}
 			})
-			// console.log(result.rows)
+			console.log(result.rows)
 			originList.value = result.rows
 			list.value = result.rows
 			Type(list.value)
@@ -82,23 +113,23 @@ const searchText = ref('')
 			}
 		},50)
 		
-		const onclick = (id)=>{
-			if(id == 3){
-				uni.navigateTo({
-					url:'/pages/index/application/bus/bus'
-				})
-			}
-			if(id == 35){
-				uni.navigateTo({
-					url:'/pages/services/application/govService/govService'
-				})
-			}
-			if(id == 36){
-				uni.navigateTo({
-					url:'/pages/index/application/garbage/garbage'
-				})
-			}
-		}
+		// const onclick = (id)=>{
+		// 	if(id == 3){
+		// 		uni.navigateTo({
+		// 			url:'/pages/index/application/bus/bus'
+		// 		})
+		// 	}
+		// 	if(id == 35){
+		// 		uni.navigateTo({
+		// 			url:'/pages/services/application/govService/govService'
+		// 		})
+		// 	}
+		// 	if(id == 36){
+		// 		uni.navigateTo({
+		// 			url:'/pages/index/application/garbage/garbage'
+		// 		})
+		// 	}
+		// }
 
 		
 		

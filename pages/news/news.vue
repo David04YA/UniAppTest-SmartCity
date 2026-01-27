@@ -5,7 +5,7 @@
 				<img :src="getUrl()+item.cover"  style=" height: 50px; width: 50px;float: left; overflow: hidden;" ></img>
 				<view style="height: 45px ; margin-right: 50;width: calc(100% - 130px); display: inline-block;">{{item.title}}</view>
 				<!-- <button style="height: 25px; width: 60px; float: right;font-size: 1px;">点赞</button> -->
-				<img src="/static/images/点赞.svg" @click.stop="Like(item.id)" style=" height: 30px;width: 30px; float:right;margin-top: 10px;">
+				<img src="/static/images/dianzan.svg" @click.stop="Like(item.id)" style=" height: 30px;width: 30px; float:right;margin-top: 10px;">
 				<view >
 					<view style="width: 80px;display: inline-block; font-size: 10px; float: right;">阅读数:{{item.readNum}}</view>
 					<view style="width: 100px;display: inline-block; font-size: 10px; float: right;">有{{item.commentNum}}个评论</view>

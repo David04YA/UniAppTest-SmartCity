@@ -67,12 +67,12 @@ const rotationList=ref([]);
 const activityList=ref([]);
 const showDetail=ref(false);
 const selectedDetail=ref(null);
-const svgList=[{name:'商务',img:'/static/images/商务.svg'},
-{name:'生活',img:'/static/images/生活.svg'},
-{name:'亲子',img:'/static/images/亲子.svg'},
-{name:'校园',img:'/static/images/校园.svg'},
-{name:'行业',img:'/static/images/行业.svg'},
-{name:'学习',img:'/static/images/学习.svg'}
+const svgList=[{name:'商务',img:'/static/images/shangwu.svg'},
+{name:'生活',img:'/static/images/shenghuo.svg'},
+{name:'亲子',img:'/static/images/qinzi.svg'},
+{name:'校园',img:'/static/images/xiaoyuan.svg'},
+{name:'行业',img:'/static/images/hangye.svg'},
+{name:'学习',img:'/static/images/xuexi.svg'}
 ]
 
 const getactivity = async ()=>{

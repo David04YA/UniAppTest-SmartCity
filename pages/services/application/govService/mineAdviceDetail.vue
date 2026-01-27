@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
 	<view>
 		
 	</view>
@@ -39,4 +39,4 @@ import { getRequest } from '../../../../utils/request'
 
 <style>
 	       
-</style> -->
+</style>

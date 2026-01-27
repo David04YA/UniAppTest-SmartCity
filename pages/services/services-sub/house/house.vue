@@ -40,10 +40,10 @@ import { ref,onMounted,computed } from 'vue';
 import request from '@/utils/request.js';
 const baseUrl='http://121.9.253.236:10001'
 const houselist=ref([]);
-const listimg=[{name:'二手房',url:'/static/images/二手房.svg'},
-{name:'租房',url:'/static/images/租房.svg'},
-{name:'楼盘',url:'/static/images/楼盘.svg'},
-{name:'中介',url:'/static/images/房屋中介.svg'}]
+const listimg=[{name:'二手房',url:'/static/images/2hand.svg'},
+{name:'租房',url:'/static/images/zufang.svg'},
+{name:'楼盘',url:'/static/images/loupan.svg'},
+{name:'中介',url:'/static/images/zhongjie.svg'}]
 
 const searchKeyword=ref('')
 // const houselist=ref([]);

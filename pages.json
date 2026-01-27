@@ -223,12 +223,12 @@
 				"navigationBarTitleText": ""
 			}
 		},
-		{
-			"path": "pages/services/application/govService/mineAdviceDetail",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
+		// {
+		// 	"path": "pages/services/application/govService/mineAdviceDetail",
+		// 	"style": {
+		// 		"navigationBarTitleText": ""
+		// 	}
+		// },
 		{
 			"path": "pages/help/job/job",
 			"style": {

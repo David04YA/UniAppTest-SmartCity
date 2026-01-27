@@ -6,7 +6,7 @@
 			</swiper-item>
 		</swiper>
 		
-		<view style="font-size: 20px;font-weight: bold;text-align: center;"><image src="/static/images/厨余垃圾.svg" style="height: 100px;width: 100px; display: inline-block;"/></view>
+		<view style="font-size: 20px;font-weight: bold;text-align: center;"><image src="/static/images/laji.svg" style="height: 100px;width: 100px; display: inline-block;"/></view>
 		<view style="display: flex; flex-wrap: wrap;justify-content: center;" >
 			<view  :class="{isRead:item.status}" @click="grabageDetail(item)" v-for="item in cookGrabageList" style="display: inline-block; text-align: center;margin: 16px ;border-radius: 50%;">
 				<image style="height: 80px;width: 80px; display: inline-block;" :src="item.url" mode="" >{{item.name}}</image>
@@ -14,7 +14,7 @@
 			</view>
 		</view>
 		
-		<view style="font-size: 20px;font-weight: bold;text-align: center;"><image src="/static/images/有害垃圾.svg" style="height: 100px;width: 100px; display: inline-block;"/></view>
+		<view style="font-size: 20px;font-weight: bold;text-align: center;"><image src="/static/images/laji2.svg" style="height: 100px;width: 100px; display: inline-block;"/></view>
 		<view style="display: flex; flex-wrap: wrap;justify-content: center;">
 			<view :class="{isRead:item.status}" @click="grabageDetail(item)" v-for="item in harfulGrabageList" style="display: inline-block; text-align: center;margin: 16px ;border-radius: 50%;">
 				<image style="height: 80px;width: 80px; display: inline-block;" :src="item.url" mode="" >{{item.name}}</image>
@@ -22,7 +22,7 @@
 			</view>
 		</view>
 		
-		<view style="font-size: 20px;font-weight: bold;text-align: center;"><image src="/static/images/其他垃圾.svg" style="height: 100px;width: 100px; display: inline-block;"/></view>
+		<view style="font-size: 20px;font-weight: bold;text-align: center;"><image src="/static/images/laji3.svg" style="height: 100px;width: 100px; display: inline-block;"/></view>
 		<view style="display: flex; flex-wrap: wrap;justify-content: center;">		
 			<view :class="{isRead:item.status}" @click="grabageDetail(item)" v-for="item in otherGrabageList" style="display: inline-block; text-align: center;margin: 16px;border-radius: 100px;">
 				<image style="height: 80px;width: 80px; display: inline-block;" :src="item.url" mode="" >{{item.name}}</image>
@@ -58,27 +58,27 @@ import getRequest , {getUrl} from '/utils/request.js'
 		})
 	}
 	const cookGrabageList = ref([
-		{url:"/static/images/厨余垃圾-菜梗菜叶.svg",name:"菜梗菜叶",id:1,status:false},
-		{url:"/static/images/厨余垃圾-剩菜剩饭.svg",name:"剩菜剩饭",id:2,status:false},
-		{url:"/static/images/厨余垃圾-果壳.svg",name:"果壳",id:3,status:false},
-		{url:"/static/images/厨余垃圾-残枝落叶.svg",name:"残枝落叶",id:4,status:false},
-		{url:"/static/images/厨余垃圾-果皮.svg",name:"果皮",id:5,status:false},
+		{url:"/static/images/caiye.svg",name:"菜梗菜叶",id:1,status:false},
+		{url:"/static/images/shengfan.svg",name:"剩菜剩饭",id:2,status:false},
+		{url:"/static/images/guoke.svg",name:"果壳",id:3,status:false},
+		{url:"/static/images/luoye.svg",name:"残枝落叶",id:4,status:false},
+		{url:"/static/images/guopi.svg",name:"果皮",id:5,status:false},
 	])
 	
 	const harfulGrabageList = ref([
-		{url:"/static/images/有害垃圾-废旧灯泡.svg",name:"废旧灯泡",id:6,status:false},
-		{url:"/static/images/有害垃圾-废旧小家电.svg",name:"废旧小家电",id:7,status:false},
-		{url:"/static/images/有害垃圾-过期化妆品.svg",name:"过期化妆品",id:8,status:false},
-		{url:"/static/images/有害垃圾-废弃温度计.svg",name:"废弃温度计",id:9,status:false},
-		{url:"/static/images/有害垃圾-过期药品.svg",name:"过期药品",id:10},
-		{url:"/static/images/有害垃圾-蓄电池.svg",name:"蓄电池",id:11},
+		{url:"/static/images/dengpao.svg",name:"废旧灯泡",id:6,status:false},
+		{url:"/static/images/jiadian.svg",name:"废旧小家电",id:7,status:false},
+		{url:"/static/images/huazhangpin.svg",name:"过期化妆品",id:8,status:false},
+		{url:"/static/images/temp.svg",name:"废弃温度计",id:9,status:false},
+		{url:"/static/images/drug.svg",name:"过期药品",id:10},
+		{url:"/static/images/battery.svg",name:"蓄电池",id:11},
 	])
 	
 	const otherGrabageList = ref([
-		{url:"/static/images/其他垃圾-烟头.svg",name:"烟头",id:12,status:false},
-		{url:"/static/images/其他垃圾-一次性餐具.svg",name:"一次性餐具",id:13,status:false},
-		{url:"/static/images/其他垃圾-破旧陶瓷品.svg",name:"破旧陶瓷品",id:14,status:false,status:false},
-		{url:"/static/images/其他垃圾-宠物粪便.svg",name:"宠物粪便",id:15,status:false},
+		{url:"/static/images/smoke.svg",name:"烟头",id:12,status:false},
+		{url:"/static/images/eat.svg",name:"一次性餐具",id:13,status:false},
+		{url:"/static/images/taoci.svg",name:"破旧陶瓷品",id:14,status:false,status:false},
+		{url:"/static/images/shi.svg",name:"宠物粪便",id:15,status:false},
 	])
 </script>
 
